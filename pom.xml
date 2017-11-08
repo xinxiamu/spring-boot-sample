@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.ymu.springbotsample</groupId>
+	<artifactId>springbotsample</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>mu-spring-boot-sample</name>
+
+	<modules>
+		<module>gs-uploading-files</module>
+		<module>jpa-entity</module>
+		<module>office-sample/gs-actuator-service/complete</module>
+		<module>office-sample/gs-rest-hateoas</module>
+		<module>spring-boot-actuato</module>
+		<module>spring-boot-aop-log</module>
+		<module>spring-boot-dubbo/compute-service</module>
+		<module>spring-boot-dubbo/compute-service/compute-api</module>
+		<module>spring-boot-dubbo/compute-service/compute-api-server</module>
+		<module>spring-boot-dubbo/consumer</module>
+		<module>spring-boot-emailsend</module>
+		<module>spring-boot-exception</module>
+		<module>spring-boot-freemarker</module>
+		<module>spring-boot-jdbcTemplate</module>
+		<module>spring-boot-log4j</module>
+		<module>spring-boot-mybatis</module>
+		<module>spring-boot-mybatis-mulidatasource</module>
+		<module>spring-boot-mybatis-xml</module>
+		<module>spring-boot-properties</module>
+		<module>spring-boot-rabbitMQ</module>
+		<module>spring-boot-rabbitmq2</module>
+		<module>spring-boot-redis</module>
+		<module>spring-boot-restful</module>
+		<module>spring-boot-scheduled</module>
+		<module>spring-boot-session</module>
+		<module>spring-boot-swagger</module>
+		<module>spring-boot-thymeleaf</module>
+		<module>spring-boot-validation-over-json</module>
+		<module>spring-boot-war</module>
+		<module>spring-retry-demo</module>
+		<module>spring-samples-oxm</module>
+		<module>springboot/springboot-hello</module>
+		<module>springboot/springboot-jpa</module>
+		<module>springboot/springboot-web</module>
+		<module>springboot-data-jpa</module>
+		<module>springboot-jooq</module>
+		<module>springboot-jpa-querydsl</module>
+		<module>todolist-spring-hateoas</module>
+	</modules>
+
+
+</project>
