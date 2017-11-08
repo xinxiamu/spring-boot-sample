@@ -3,8 +3,5 @@
 .idea/modules.xml
 .idea/spring-boot-sample.iml
 .idea/workspace.xml
-jpa-entity/doc/
-office-sample/gs-rest-hateoas/.idea/inspectionProfiles/
-office-sample/gs-rest-hateoas/target/generated-sources/
-office-sample/gs-rest-hateoas/target/generated-test-sources/
-spring-boot-war/src/main/webapp/
+.idea/
+
