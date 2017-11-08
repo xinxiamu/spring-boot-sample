@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: querydsl
+  profiles:
+    active: dev
+jasypt:
+  encryptor:
+    password: abcd
+
+---
+mumu: ENC(nS/GAXzkncZfBoeP+2Mo3Q==)
+
