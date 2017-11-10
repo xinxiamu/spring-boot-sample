@@ -32,7 +32,7 @@
 		<module>spring-boot-properties</module>
 		<module>spring-boot-rabbitMQ</module>
 		<module>spring-boot-rabbitmq2</module>
-		<module>spring-boot-redis</module>
+		<module>spring-boot-data-redis</module>
 		<module>spring-boot-restful</module>
 		<module>spring-boot-scheduled</module>
 		<module>spring-boot-session</module>
@@ -49,6 +49,7 @@
 		<module>springboot-jooq</module>
 		<module>springboot-jpa-querydsl</module>
 		<module>todolist-spring-hateoas</module>
+		<module>spring-boot-async</module>
 	</modules>
 
 
