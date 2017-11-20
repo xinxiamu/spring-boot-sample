@@ -16,6 +16,8 @@ public class ContainerConfig {
 	@Value("${server.port}")
 	private int webPort;
 
+	//---------- 配置http打开自动转换到https协议
+
 	@Bean
 	public EmbeddedServletContainerFactory servletContainer() {
 		TomcatEmbeddedServletContainerFactory tomcat = new TomcatEmbeddedServletContainerFactory() {
