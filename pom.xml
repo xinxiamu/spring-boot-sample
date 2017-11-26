@@ -51,6 +51,7 @@
 		<module>todolist-spring-hateoas</module>
 		<module>spring-boot-async</module>
 		<module>spring-boot-cors/SpringBootCORSJavaConfig</module>
+		<module>SpringBootHATEOAS</module>
 	</modules>
 
 
