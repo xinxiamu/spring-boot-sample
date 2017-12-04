@@ -52,6 +52,7 @@
 		<module>spring-boot-async</module>
 		<module>spring-boot-cors/SpringBootCORSJavaConfig</module>
 		<module>SpringBootHATEOAS</module>
+		<module>spring-boot-2.0</module>
 	</modules>
 
 
