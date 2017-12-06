@@ -1,7 +1,6 @@
 package com.didispace;
 
-import java.io.Serializable;
-
+import com.didispace.domain.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,12 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.didispace.domain.Address;
-import com.didispace.domain.BaseVo;
-import com.didispace.domain.User;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,32 +21,32 @@ public class ApplicationTests {
 	@Autowired
 	private RedisTemplate<String,User> redisTemplate;
 
-	@SuppressWarnings("rawtypes")
-	@Autowired
-	private RedisTemplate jedisTemplate;
+//	@SuppressWarnings("rawtypes")
+//	@Autowired
+//	private RedisTemplate jedisTemplate;
 	
 	@Test
 	public void templateTest() {
-		User user = new User("张华", 18);
-		ValueOperations<String, User> uop = jedisTemplate.opsForValue();
-		uop.set("user", user);
-		System.out.println("------user=" + uop.get("user").getUsername());
-		
-		Address adr = new Address();
-		adr.setPrv("广东省");
-		adr.setCity("茂名市");
-		adr.setArea("滨海新区");
-		adr.setZcode(123456l);
-		ValueOperations<String,Address> ov = jedisTemplate.opsForValue();
-		ov.set("adr", adr);
-		System.out.println("==========adr:" + ov.get("adr").getPrv());
+//		User user = new User("张华", 18);
+//		ValueOperations<String, User> uop = jedisTemplate.opsForValue();
+//		uop.set("user", user);
+//		System.out.println("------user=" + uop.get("user").getUsername());
+//
+//		Address adr = new Address();
+//		adr.setPrv("广东省");
+//		adr.setCity("茂名市");
+//		adr.setArea("滨海新区");
+//		adr.setZcode(123456l);
+//		ValueOperations<String,Address> ov = jedisTemplate.opsForValue();
+//		ov.set("adr", adr);
+//		System.out.println("==========adr:" + ov.get("adr").getPrv());
 	}
 
 	@Test
 	public void stringRedisTemplateTest() throws Exception {
 		// 简单的<string,string>
 		ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
-		ops.set("ab", "ababababab");
+		ops.set("ab", "zhangmutian");
 		ops.set("c", "真的吗",50l);
 //		stringRedisTemplate.delete("ab");
 		System.out.println("------------ab:" + ops.get("ab"));
