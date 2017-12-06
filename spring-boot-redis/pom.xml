@@ -4,17 +4,17 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.didispace</groupId>
-	<artifactId>spring-boot-data-redis</artifactId>
+	<artifactId>spring-boot-redis</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>spring-boot-data-redis</name>
-	<description>spring-boot-redis</description>
+	<name>spring-boot-redis</name>
+	<description>spring-boot-data-redis</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.1.RELEASE</version>
+		<version>1.5.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 

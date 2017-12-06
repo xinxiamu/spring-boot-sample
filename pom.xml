@@ -17,7 +17,7 @@
 		<module>office-sample/gs-rest-hateoas</module>
 		<module>spring-boot-actuato</module>
 		<module>spring-boot-aop-log</module>
-		<!--<module>spring-boot-data-redis</module>-->
+		<module>spring-boot-redis</module>
 		<module>spring-boot-dubbo/compute-service</module>
 		<module>spring-boot-dubbo/compute-service/compute-api</module>
 		<module>spring-boot-dubbo/compute-service/compute-api-server</module>
