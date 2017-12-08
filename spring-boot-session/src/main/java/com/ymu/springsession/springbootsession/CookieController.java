@@ -29,6 +29,6 @@ public class CookieController {
                 System.out.println(cookie.getName() + " : " + cookie.getValue());
             }
         }
-        return "index";
+        return sessionBrowser != null ? (String) sessionBrowser : "";
     }
 }
