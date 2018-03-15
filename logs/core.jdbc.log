@@ -1,0 +1,43 @@
+11:06:23.674 main - 3. create table classz (id bigint not null auto_increment, cnum integer not null, grade_id bigint, 
+primary key (id))  {executed in 76 ms}
+11:06:23.699 main - 3. create table grade (id bigint not null auto_increment, gnum integer not null, primary key (id))  {executed in 23 ms}
+11:06:23.724 main - 3. create table pepole_basic (id bigint not null auto_increment, birthday_time datetime, name 
+varchar(80) not null, sext_type varchar(10) not null, primary key (id))  {executed in 23 ms}
+11:06:23.748 main - 3. create table principal (id bigint not null auto_increment, principal_type varchar(50) not null, 
+teacher_id bigint, primary key (id))  {executed in 22 ms}
+11:06:23.771 main - 3. create table school (id bigint not null auto_increment, addr varchar(180) not null, found_time 
+datetime, name varchar(80) not null, primary key (id))  {executed in 21 ms}
+11:06:23.796 main - 3. create table school_grades (school_id bigint not null, grades_id bigint not null)  {executed in 23 ms}
+11:06:23.822 main - 3. create table student (id bigint not null auto_increment, pepole_basic_id bigint, classz_id 
+bigint, primary key (id))  {executed in 22 ms}
+11:06:23.847 main - 3. create table teacher (id bigint not null auto_increment, pepole_basic_id bigint, school_id 
+bigint, primary key (id))  {executed in 23 ms}
+11:06:23.872 main - 3. create table teacher_classzs (teachers_id bigint not null, classzs_id bigint not null)  {executed in 23 ms}
+11:06:23.896 main - 3. create table teacher_students (teachers_id bigint not null, students_id bigint not null)  {executed in 22 ms}
+11:06:23.981 main - 3. alter table school_grades add constraint UK_kqgtvgttk4uctth050ars78yd unique (grades_id)  {executed in 67 ms}
+11:06:24.013 main - 3. alter table student add constraint UK_kvseqb7lnhj12n0ge2cjii29c unique (pepole_basic_id)  {executed in 19 ms}
+11:06:24.039 main - 3. alter table teacher add constraint UK_35q12m078dxpacgomdd8r8ruk unique (pepole_basic_id)  {executed in 19 ms}
+11:06:24.104 main - 3. alter table classz add constraint FKdgify2gayjdkjycb28eua14u3 foreign key (grade_id) references 
+grade (id)  {executed in 59 ms}
+11:06:24.161 main - 3. alter table principal add constraint FKjq1gmcvqla979i6l5cjts2g1i foreign key (teacher_id) references 
+teacher (id)  {executed in 55 ms}
+11:06:24.216 main - 3. alter table school_grades add constraint FKtcsxc2tg73gpbp94rh9xicx41 foreign key (grades_id) 
+references grade (id)  {executed in 53 ms}
+11:06:24.272 main - 3. alter table school_grades add constraint FKfuq5qt8cp37mc081c0tm1dss0 foreign key (school_id) 
+references school (id)  {executed in 54 ms}
+11:06:24.328 main - 3. alter table student add constraint FK7c7aj3i9vkwmap93f2ope7snw foreign key (pepole_basic_id) 
+references pepole_basic (id)  {executed in 55 ms}
+11:06:24.380 main - 3. alter table student add constraint FKoixnmxewp3tgvycctig771gnv foreign key (classz_id) references 
+classz (id)  {executed in 52 ms}
+11:06:24.433 main - 3. alter table teacher add constraint FKeqs9i685y0g9mxthybyjci5w9 foreign key (pepole_basic_id) 
+references pepole_basic (id)  {executed in 52 ms}
+11:06:24.489 main - 3. alter table teacher add constraint FKrg46bnmgbcccayv14naymqg3r foreign key (school_id) references 
+school (id)  {executed in 56 ms}
+11:06:24.541 main - 3. alter table teacher_classzs add constraint FKiy6ob539n4emv1opoflb20535 foreign key (classzs_id) 
+references classz (id)  {executed in 50 ms}
+11:06:24.595 main - 3. alter table teacher_classzs add constraint FKh2hf2esdxmjpauonrgqt7gymi foreign key (teachers_id) 
+references teacher (id)  {executed in 54 ms}
+11:06:24.648 main - 3. alter table teacher_students add constraint FKhstoj4yep9m2vr6wh8cvq1upf foreign key (students_id) 
+references student (id)  {executed in 51 ms}
+11:06:24.708 main - 3. alter table teacher_students add constraint FKkr9rjnme1klpd0o8snoce0124 foreign key (teachers_id) 
+references teacher (id)  {executed in 60 ms}

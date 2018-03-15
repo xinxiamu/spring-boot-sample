@@ -83,12 +83,12 @@ public class DaoTest {
 	
 	@Test
 	public void getSchool() {
-		School school = schoolDao.getMRepository().findOne(1L);
-		System.out.println("=====school:" + school.getName());
-		schoolDao.findSchoolName();
+//		School school = schoolDao.getMRepository().findOne(1L);
+//		System.out.println("=====school:" + school.getName());
+//		schoolDao.findSchoolName();
 		
-//		Result<Record> a = jooq.select().from(SCHOOL).fetch();
-//		System.out.println("---sql:" + a.size()); 
+		Result<Record> a = jooq.select().from(SCHOOL).fetch();
+		System.out.println("---sql:" + a.size());
 	}
 	
 	@Test

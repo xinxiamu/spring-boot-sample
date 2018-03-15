@@ -1,0 +1,21 @@
+11:07:43.152 main - 6. insert into school (addr, found_time, name) values ('马槛村', '03/15/2018 11:07:43.062', '马槛小学')  {executed in 4 ms}
+11:07:43.153 main - 6. getGeneratedKeys on query: insert into school (addr, found_time, name) values ('马槛村', '03/15/2018 
+11:07:43.062', '马槛小学')  {executed in 0 ms}
+11:07:43.169 main - 6. insert into grade (gnum) values (1)  {executed in 1 ms}
+11:07:43.169 main - 6. getGeneratedKeys on query: insert into grade (gnum) values (1)  {executed in 0 ms}
+11:07:43.177 main - 6. insert into grade (gnum) values (2)  {executed in 7 ms}
+11:07:43.178 main - 6. getGeneratedKeys on query: insert into grade (gnum) values (2)  {executed in 0 ms}
+11:07:43.197 main - 6. insert into classz (cnum, grade_id) values (1, 2)  {executed in 0 ms}
+11:07:43.198 main - 6. getGeneratedKeys on query: insert into classz (cnum, grade_id) values (1, 2)  {executed in 0 ms}
+11:07:43.215 main - 6. insert into classz (cnum, grade_id) values (2, 1)  {executed in 16 ms}
+11:07:43.216 main - 6. getGeneratedKeys on query: insert into classz (cnum, grade_id) values (2, 1)  {executed in 0 ms}
+11:07:43.241 main - 6. insert into school_grades (school_id, grades_id) values (1, 1)  {executed in 0 ms}
+11:07:43.247 main - 6. insert into school_grades (school_id, grades_id) values (1, 2)  {executed in 4 ms}
+11:10:41.017 main - 6. select school0_.id as id1_4_0_, school0_.addr as addr2_4_0_, school0_.found_time as found_ti3_4_0_, 
+school0_.name as name4_4_0_ from school school0_ where school0_.id=5  {executed in 4 ms}
+11:10:41.049 main - 6. insert into pepole_basic (birthday_time, name, sext_type) values ('03/15/2018 11:10:41.027', 
+'张三', 'MALE')  {executed in 1 ms}
+11:10:41.049 main - 6. getGeneratedKeys on query: insert into pepole_basic (birthday_time, name, sext_type) values 
+('03/15/2018 11:10:41.027', '张三', 'MALE')  {executed in 0 ms}
+11:10:41.071 main - 6. insert into teacher (pepole_basic_id, school_id) values (1, NULL)  {executed in 1 ms}
+11:10:41.071 main - 6. getGeneratedKeys on query: insert into teacher (pepole_basic_id, school_id) values (1, NULL)  {executed in 0 ms}
