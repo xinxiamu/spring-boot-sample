@@ -44,6 +44,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -51,6 +57,117 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>1.0-alpha-2</version>
+				<executions>
+					<execution>
+						<phase>initialize</phase>
+						<goals>
+							<goal>read-project-properties</goal>
+						</goals>
+						<configuration>
+							<files>
+								<file>src/main/resources/application.properties</file>
+							</files>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<!-- The H2 test schema is loaded here -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sql-maven-plugin</artifactId>
+				<version>1.5</version>
+
+				<configuration>
+					<skip>${maven.test.skip}</skip>
+					<forkMode>always</forkMode>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>create-database-h2</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>execute</goal>
+						</goals>
+						<configuration>
+							<driver>${spring.datasource.driverClassName}</driver>
+							<url>${spring.datasource.url}</url>
+							<username>${spring.datasource.username}</username>
+							<password>${spring.datasource.password}</password>
+
+							<autocommit>true</autocommit>
+							<srcFiles>
+								<srcFile>src/main/resources/schema-h2.sql</srcFile>
+								<srcFile>src/main/resources/data-h2.sql</srcFile>
+							</srcFiles>
+						</configuration>
+					</execution>
+				</executions>
+
+				<dependencies>
+					<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>${h2.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<!-- The jOOQ code generator plugin -->
+			<plugin>
+				<groupId>org.jooq</groupId>
+				<artifactId>jooq-codegen-maven</artifactId>
+
+				<executions>
+					<execution>
+						<id>generate-h2</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<jdbc>
+								<driver>${spring.datasource.driverClassName}</driver>
+								<url>${spring.datasource.url}</url>
+								<user>${spring.datasource.username}</user>
+								<password>${spring.datasource.password}</password>
+							</jdbc>
+							<generator>
+								<database>
+									<name>org.jooq.util.mysql.MySQLDatabase</name>
+									<includes>.*</includes>
+									<excludes></excludes>
+									<dateAsTimestamp>true</dateAsTimestamp>
+									<inputSchema>PUBLIC</inputSchema>
+								</database>
+								<generate>
+									<deprecated>false</deprecated>
+									<instanceFields>true</instanceFields>
+									<pojos>true</pojos>
+								</generate>
+								<target>
+									<packageName>org.jooq.example.db.h2</packageName>
+									<directory>target/generated-sources/jooq-h2</directory>
+								</target>
+							</generator>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+						<version>${h2.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

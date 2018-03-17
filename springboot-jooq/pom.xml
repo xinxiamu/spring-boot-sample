@@ -169,7 +169,7 @@
 								<password>${datasource.testDb.password}</password>
 							</jdbc>
 							<generator>
-								<name>org.jooq.util.DefaultGenerator</name>
+								<!--<name>org.jooq.util.</name>-->
 								<database>
 									<name>org.jooq.util.mysql.MySQLDatabase</name>
 									<includes>.*</includes>
