@@ -52,10 +52,8 @@ public class TestDbConfig {
 				.persistenceUnit("testDbPersistenceUnit").build();
 	}
 
-	@Autowired
-	private JpaProperties jpaProperties;
-
 	private Map<String, String> getVendorProperties(DataSource dataSource) {
+		JpaProperties jpaProperties = new JpaProperties();
 		return jpaProperties.getHibernateProperties(dataSource);
 	}
 

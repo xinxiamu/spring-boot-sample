@@ -11,12 +11,15 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class BaseEntity implements Serializable,Cloneable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6902749579633247824L;   
-	
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

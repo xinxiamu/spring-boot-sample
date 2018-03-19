@@ -17,10 +17,11 @@ public abstract class BaseDaoImpl<T extends BaseRepository> implements BaseDao<T
 	protected T mRepository;
 	
 	@Autowired
-	protected DSLContext jooq;
+	protected DSLContext jooqDsl;
 	
 	@Override
 	public T getMRepository() {
+		System.out.println(">>>>>mRepository:" + mRepository.toString());
 		return mRepository;
 	}
 	
@@ -31,7 +32,7 @@ public abstract class BaseDaoImpl<T extends BaseRepository> implements BaseDao<T
 	
 	@Override
 	public DSLContext getJooq() {
-		return jooq;
+		return jooqDsl;
 	}
 }
 	

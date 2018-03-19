@@ -1,0 +1,4 @@
+2018-03-19 17:21:52,786 ERROR o.h.e.j.s.SqlExceptionHelper [main] Field 'sex' doesn't have a default value
+2018-03-19 17:22:49,817 ERROR o.h.e.j.s.SqlExceptionHelper [main] Field 'sex' doesn't have a default value
+2018-03-19 17:26:04,576 ERROR o.h.e.j.s.SqlExceptionHelper [main] Field 'sex' doesn't have a default value
+2018-03-19 17:35:02,651 ERROR o.h.e.j.s.SqlExceptionHelper [main] Duplicate entry 'oo' for key 'UK_jy2eu6s9e28na3fwo7fxv0a0x'

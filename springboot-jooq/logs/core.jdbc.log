@@ -1,21 +1,63 @@
-11:07:43.152 main - 6. insert into school (addr, found_time, name) values ('马槛村', '03/15/2018 11:07:43.062', '马槛小学')  {executed in 4 ms}
-11:07:43.153 main - 6. getGeneratedKeys on query: insert into school (addr, found_time, name) values ('马槛村', '03/15/2018 
-11:07:43.062', '马槛小学')  {executed in 0 ms}
-11:07:43.169 main - 6. insert into grade (gnum) values (1)  {executed in 1 ms}
-11:07:43.169 main - 6. getGeneratedKeys on query: insert into grade (gnum) values (1)  {executed in 0 ms}
-11:07:43.177 main - 6. insert into grade (gnum) values (2)  {executed in 7 ms}
-11:07:43.178 main - 6. getGeneratedKeys on query: insert into grade (gnum) values (2)  {executed in 0 ms}
-11:07:43.197 main - 6. insert into classz (cnum, grade_id) values (1, 2)  {executed in 0 ms}
-11:07:43.198 main - 6. getGeneratedKeys on query: insert into classz (cnum, grade_id) values (1, 2)  {executed in 0 ms}
-11:07:43.215 main - 6. insert into classz (cnum, grade_id) values (2, 1)  {executed in 16 ms}
-11:07:43.216 main - 6. getGeneratedKeys on query: insert into classz (cnum, grade_id) values (2, 1)  {executed in 0 ms}
-11:07:43.241 main - 6. insert into school_grades (school_id, grades_id) values (1, 1)  {executed in 0 ms}
-11:07:43.247 main - 6. insert into school_grades (school_id, grades_id) values (1, 2)  {executed in 4 ms}
-11:10:41.017 main - 6. select school0_.id as id1_4_0_, school0_.addr as addr2_4_0_, school0_.found_time as found_ti3_4_0_, 
-school0_.name as name4_4_0_ from school school0_ where school0_.id=5  {executed in 4 ms}
-11:10:41.049 main - 6. insert into pepole_basic (birthday_time, name, sext_type) values ('03/15/2018 11:10:41.027', 
-'张三', 'MALE')  {executed in 1 ms}
-11:10:41.049 main - 6. getGeneratedKeys on query: insert into pepole_basic (birthday_time, name, sext_type) values 
-('03/15/2018 11:10:41.027', '张三', 'MALE')  {executed in 0 ms}
-11:10:41.071 main - 6. insert into teacher (pepole_basic_id, school_id) values (1, NULL)  {executed in 1 ms}
-11:10:41.071 main - 6. getGeneratedKeys on query: insert into teacher (pepole_basic_id, school_id) values (1, NULL)  {executed in 0 ms}
+17:27:16.621 main - 3. create table author (id bigint not null auto_increment, name varchar(80) not null, primary 
+key (id))  {executed in 23 ms}
+17:27:19.218 main - 6. insert into author (name) values ('zmt')  {executed in 1 ms}
+17:27:19.218 main - 6. getGeneratedKeys on query: insert into author (name) values ('zmt')  {executed in 0 ms}
+17:27:19.272 main - 6. insert into book (author_id, book_name) values (1, 'oo')  {executed in 1 ms}
+17:27:19.272 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (1, 'oo')  {executed in 0 ms}
+17:27:19.274 main - 6. insert into book (author_id, book_name) values (0, NULL)  {executed in 0 ms}
+17:27:19.275 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (0, NULL)  {executed in 0 ms}
+17:27:19.277 main - 6. insert into book (author_id, book_name) values (0, NULL)  {executed in 1 ms}
+17:27:19.277 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (0, NULL)  {executed in 0 ms}
+17:28:46.545 main - 6. insert into author (name) values ('zmt')  {executed in 1 ms}
+17:28:46.548 main - 6. getGeneratedKeys on query: insert into author (name) values ('zmt')  {executed in 0 ms}
+17:28:46.574 main - 6. insert into book (author_id, book_name) values (2, 'oo')  {executed in 0 ms}
+17:28:46.575 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (2, 'oo')  {executed in 1 ms}
+17:28:46.582 main - 6. insert into book (author_id, book_name) values (0, NULL)  {executed in 1 ms}
+17:28:46.582 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (0, NULL)  {executed in 0 ms}
+17:28:46.592 main - 6. insert into book (author_id, book_name) values (0, NULL)  {executed in 3 ms}
+17:28:46.593 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (0, NULL)  {executed in 1 ms}
+17:31:20.106 main - 6. insert into author (name) values ('zmt')  {executed in 2 ms}
+17:31:20.109 main - 6. getGeneratedKeys on query: insert into author (name) values ('zmt')  {executed in 1 ms}
+17:31:20.133 main - 6. insert into book (author_id, book_name) values (3, 'black world')  {executed in 0 ms}
+17:31:20.134 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (3, 'black world')  {executed in 0 ms}
+17:31:20.140 main - 6. insert into book (author_id, book_name) values (3, 'haha')  {executed in 1 ms}
+17:31:20.142 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (3, 'haha')  {executed in 1 ms}
+17:31:20.145 main - 6. insert into book (author_id, book_name) values (3, 'oo')  {executed in 1 ms}
+17:31:20.145 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (3, 'oo')  {executed in 0 ms}
+17:33:00.241 main - 6. insert into author (name) values ('zmt')  {executed in 1 ms}
+17:33:00.242 main - 6. getGeneratedKeys on query: insert into author (name) values ('zmt')  {executed in 0 ms}
+17:33:00.265 main - 6. insert into book (author_id, book_name) values (4, 'black world')  {executed in 1 ms}
+17:33:00.265 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (4, 'black world')  {executed in 0 ms}
+17:33:00.267 main - 6. insert into book (author_id, book_name) values (4, 'haha')  {executed in 0 ms}
+17:33:00.268 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (4, 'haha')  {executed in 0 ms}
+17:33:00.284 main - 6. select book0_.id as id1_1_0_, book0_.author_id as author_i2_1_0_, book0_.book_name as book_nam3_1_0_ 
+from book book0_ where book0_.id=-1  {executed in 1 ms}
+17:33:00.287 main - 6. insert into book (author_id, book_name) values (4, 'oo')  {executed in 0 ms}
+17:33:00.288 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (4, 'oo')  {executed in 0 ms}
+17:34:26.725 main - 3. create table author (id bigint not null auto_increment, name varchar(80) not null, primary 
+key (id))  {executed in 21 ms}
+17:34:26.749 main - 3. create table book (id bigint not null auto_increment, author_id bigint, book_name varchar(150) 
+not null, primary key (id))  {executed in 20 ms}
+17:34:26.864 main - 3. alter table book add constraint UK_jy2eu6s9e28na3fwo7fxv0a0x unique (book_name)  {executed in 19 ms}
+17:34:29.298 main - 6. insert into author (name) values ('zmt')  {executed in 1 ms}
+17:34:29.299 main - 6. getGeneratedKeys on query: insert into author (name) values ('zmt')  {executed in 1 ms}
+17:34:29.319 main - 6. insert into book (author_id, book_name) values (1, 'black world')  {executed in 0 ms}
+17:34:29.320 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (1, 'black world')  {executed in 0 ms}
+17:34:29.322 main - 6. insert into book (author_id, book_name) values (1, 'haha')  {executed in 1 ms}
+17:34:29.322 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (1, 'haha')  {executed in 0 ms}
+17:34:29.324 main - 6. insert into book (author_id, book_name) values (1, 'oo')  {executed in 0 ms}
+17:34:29.325 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (1, 'oo')  {executed in 0 ms}
+17:35:02.597 main - 6. insert into author (name) values ('zmt')  {executed in 1 ms}
+17:35:02.599 main - 6. getGeneratedKeys on query: insert into author (name) values ('zmt')  {executed in 1 ms}
+17:35:02.623 main - 6. insert into book (author_id, book_name) values (2, 'black world1')  {executed in 1 ms}
+17:35:02.623 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (2, 'black world1')  {executed in 0 ms}
+17:35:02.632 main - 6. insert into book (author_id, book_name) values (2, 'haha1')  {executed in 0 ms}
+17:35:02.633 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (2, 'haha1')  {executed in 0 ms}
+17:35:34.984 main - 6. insert into author (name) values ('zmt')  {executed in 0 ms}
+17:35:34.985 main - 6. getGeneratedKeys on query: insert into author (name) values ('zmt')  {executed in 0 ms}
+17:35:35.004 main - 6. insert into book (author_id, book_name) values (3, 'black world1')  {executed in 2 ms}
+17:35:35.005 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (3, 'black world1')  {executed in 0 ms}
+17:35:35.007 main - 6. insert into book (author_id, book_name) values (3, 'haha1')  {executed in 0 ms}
+17:35:35.007 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (3, 'haha1')  {executed in 0 ms}
+17:35:35.009 main - 6. insert into book (author_id, book_name) values (3, 'oo1')  {executed in 0 ms}
+17:35:35.009 main - 6. getGeneratedKeys on query: insert into book (author_id, book_name) values (3, 'oo1')  {executed in 0 ms}
