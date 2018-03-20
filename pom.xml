@@ -54,6 +54,7 @@
 		<module>SpringBootHATEOAS</module>
 		<module>spring-boot-2.0</module>
 		<module>spring-boot-jooq-example</module>
+		<module>spring-boot-2/spring-mvc-apiexport</module>
 	</modules>
 
 
