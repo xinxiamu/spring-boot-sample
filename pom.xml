@@ -55,6 +55,7 @@
 		<module>spring-boot-2.0</module>
 		<module>spring-boot-jooq-example</module>
 		<module>spring-boot-2/spring-mvc-apiexport</module>
+		<module>spring-boot-2/springboot2-ehcache</module>
 	</modules>
 
 
