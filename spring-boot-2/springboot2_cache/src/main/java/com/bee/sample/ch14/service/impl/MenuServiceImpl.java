@@ -19,6 +19,11 @@ public class MenuServiceImpl implements MenuService {
 		
 	}
 
+	@CacheEvict (cacheNames ={ "menu2","menuTree2"},allEntries=true)
+	public Menu addMenu2(Menu menu) {
+		return menu;
+	}
+
 	@Cacheable(cacheNames="menu")
 	public Menu getMenu(Long id) {
 		log.info("call service getMenu " + id);

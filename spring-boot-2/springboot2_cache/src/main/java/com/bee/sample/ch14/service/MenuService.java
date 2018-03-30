@@ -5,6 +5,7 @@ import com.bee.sample.ch14.pojo.MenuNode;
 
 public interface MenuService {
 	public void addMenu(Menu menu);
+	public Menu addMenu2(Menu menu);
 	public Menu getMenu(Long id);
 	public MenuNode getMenuTree();
 }

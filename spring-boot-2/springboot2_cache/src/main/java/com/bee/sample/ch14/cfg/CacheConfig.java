@@ -6,8 +6,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.Cache;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
@@ -28,13 +30,15 @@ import org.springframework.data.redis.serializer.RedisSerializationContext.Seria
  * @author xiandafu
  *
  */
-//@Configuration
+@Configuration
+@EnableCaching
 public class CacheConfig {
 	// 定义一个redis 的频道，默认叫cache，用于pub/sub
 	@Value("${springext.cache.redis.topic:cache}")
 	String topicName;
 
 	@Bean
+	@Primary
 	public TwoLevelCacheManager cacheManager(StringRedisTemplate redisTemplate) {
 	
 		RedisCacheWriter writer = RedisCacheWriter.lockingRedisCacheWriter(redisTemplate.getConnectionFactory());
