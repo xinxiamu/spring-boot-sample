@@ -61,21 +61,17 @@ public class CacheConfig {
 
 	@Bean
 	MessageListenerAdapter listenerAdapter(final TwoLevelCacheManager cacheManager) {
-		return new MessageListenerAdapter(new MessageListener() {
+		return new MessageListenerAdapter((MessageListener) (message, pattern) -> {
+			byte[] bs = message.getChannel();
 
-			public void onMessage(Message message, byte[] pattern) {
-				byte[] bs = message.getChannel();
-				
-				try {
-					// Sub 一个消息，通知缓存管理器
-					String type = new String(bs, "UTF-8");
-					String cacheName = new String(message.getBody(),"UTF-8");
-					cacheManager.receiver(cacheName);
-				} catch (UnsupportedEncodingException e) {
-					e.printStackTrace();
-					// 不可能出错，忽略
-				}
-
+			try {
+				// Sub 一个消息，通知缓存管理器
+				String type = new String(bs, "UTF-8");
+				String cacheName = new String(message.getBody(),"UTF-8");
+				cacheManager.receiver(cacheName);
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+				// 不可能出错，忽略
 			}
 
 		});
