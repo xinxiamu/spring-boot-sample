@@ -41,7 +41,7 @@ public class HelloController {
     public String hello(HttpServletRequest request){
         System.out.println("haha1..........");
         
-        return "hello";
+        return "hello:v1";
     }
     
     @RequestMapping("hello/")
@@ -50,7 +50,7 @@ public class HelloController {
     public String hello2(HttpServletRequest request){
         System.out.println("haha2.........");
         
-        return "hello";
+        return "hello:v2";
     }
     
     @RequestMapping("hello/")
