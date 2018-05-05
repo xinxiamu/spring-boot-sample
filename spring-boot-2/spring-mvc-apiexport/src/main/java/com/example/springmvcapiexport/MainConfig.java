@@ -4,9 +4,8 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * 主配置文件
- * 
- * @author lujijiang
  *
+ * @author lujijiang
  */
 @Configuration
 //@ImportResource("classpath:/drools-config.xml")

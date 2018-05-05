@@ -42,7 +42,7 @@ public class ApiExporter implements ApplicationListener<ContextRefreshedEvent>, 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         //防止二次调用
-        if(event.getApplicationContext().getParent() != null){
+        if (event.getApplicationContext().getParent() != null) {
             return;
         }
 

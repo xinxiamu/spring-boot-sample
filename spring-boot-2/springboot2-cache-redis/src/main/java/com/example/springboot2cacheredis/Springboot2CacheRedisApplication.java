@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Springboot2CacheRedisApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Springboot2CacheRedisApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Springboot2CacheRedisApplication.class, args);
+    }
 }

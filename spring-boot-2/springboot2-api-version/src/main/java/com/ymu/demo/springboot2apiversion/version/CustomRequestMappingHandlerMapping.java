@@ -10,17 +10,19 @@ public class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMap
 
     /**
      * 类。
+     *
      * @param handlerType
      * @return
      */
     @Override
     protected RequestCondition<ApiVersionCondition> getCustomTypeCondition(Class<?> handlerType) {
-        ApiVersion apiVersion = AnnotationUtils.findAnnotation(handlerType, ApiVersion.class); 
+        ApiVersion apiVersion = AnnotationUtils.findAnnotation(handlerType, ApiVersion.class);
         return createCondition(apiVersion);
     }
 
     /**
      * 方法
+     *
      * @param method
      * @return
      */
@@ -29,7 +31,7 @@ public class CustomRequestMappingHandlerMapping extends RequestMappingHandlerMap
         ApiVersion apiVersion = AnnotationUtils.findAnnotation(method, ApiVersion.class);
         return createCondition(apiVersion);
     }
-    
+
     private RequestCondition<ApiVersionCondition> createCondition(ApiVersion apiVersion) {
         return apiVersion == null ? null : new ApiVersionCondition(apiVersion.value());
     }

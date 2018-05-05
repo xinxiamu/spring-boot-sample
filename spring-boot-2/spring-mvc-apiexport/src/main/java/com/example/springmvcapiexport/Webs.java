@@ -32,21 +32,22 @@ public class Webs {
 
     /**
      * 获取访问者的IP地址
+     *
      * @return
      */
     public static String getIP() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        if(request==null){
+        if (request == null) {
             throw new IllegalStateException("Need to configure the RequestContextListener");
         }
         String ip = request.getHeader("x-forwarded-for");
-        if (ip==null || "".equals(ip) || "unknown".equalsIgnoreCase(ip)) {
+        if (ip == null || "".equals(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
         }
-        if (ip==null || "".equals(ip)  || "unknown".equalsIgnoreCase(ip)) {
+        if (ip == null || "".equals(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("WL-Proxy-Client-IP");
         }
-        if (ip==null || "".equals(ip)  || "unknown".equalsIgnoreCase(ip)) {
+        if (ip == null || "".equals(ip) || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
         // 多个路由时，取第一个非unknown的ip

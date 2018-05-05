@@ -26,10 +26,10 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  */
 @Configuration
 @EnableCaching
-public class CacheConfig extends CachingConfigurerSupport{
+public class CacheConfig extends CachingConfigurerSupport {
 
     @Bean
-    public KeyGenerator keyGenerator(){
+    public KeyGenerator keyGenerator() {
         return new CacheKeyGenerator();
     }
 
@@ -71,7 +71,6 @@ public class CacheConfig extends CachingConfigurerSupport{
         template.afterPropertiesSet();
         return template;
     }
-
 
 
 }

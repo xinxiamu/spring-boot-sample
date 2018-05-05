@@ -9,7 +9,7 @@ public class ApiVersionCondition implements RequestCondition<ApiVersionCondition
 
     private int apiVersion;
 
-    public ApiVersionCondition(int apiVersion){
+    public ApiVersionCondition(int apiVersion) {
         this.apiVersion = apiVersion;
     }
 
@@ -19,11 +19,11 @@ public class ApiVersionCondition implements RequestCondition<ApiVersionCondition
     }
 
     public ApiVersionCondition getMatchingCondition(HttpServletRequest request) {
-    	String path = request.getServletPath();
-    	if (path == null) {
-			return null;
-		}
-		String contentVersion = request.getHeader("Content-Version"); //在http请求头中定义api版本，而不是在url中
+        String path = request.getServletPath();
+        if (path == null) {
+            return null;
+        }
+        String contentVersion = request.getHeader("Content-Version"); //在http请求头中定义api版本，而不是在url中
         if (null == contentVersion || "".equals(contentVersion)) {
             throw new IllegalArgumentException("Content-Version非null非空");
         }
@@ -32,7 +32,7 @@ public class ApiVersionCondition implements RequestCondition<ApiVersionCondition
         }
 
         int version = Integer.valueOf(contentVersion).intValue();
-        if(version >= this.apiVersion) { // 如果请求的版本号大于配置版本号， 则满足
+        if (version >= this.apiVersion) { // 如果请求的版本号大于配置版本号， 则满足
             return this;
         }
         return null;
@@ -49,6 +49,7 @@ public class ApiVersionCondition implements RequestCondition<ApiVersionCondition
 
     /**
      * 判断字符串是否为整数。
+     *
      * @param str
      * @return
      */
