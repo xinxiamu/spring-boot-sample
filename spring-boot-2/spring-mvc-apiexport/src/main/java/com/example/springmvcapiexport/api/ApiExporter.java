@@ -10,12 +10,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.Assert;
 import org.springframework.web.HttpRequestHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.ServletException;
@@ -25,10 +21,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.TimeUnit;
 
 /**
  * API暴露器，监测项目中所有的Controller的RequestMapping方法
@@ -49,6 +44,7 @@ public class ApiExporter implements ApplicationListener<ContextRefreshedEvent>, 
         if (this.applicationContext == null && event.getApplicationContext() instanceof WebApplicationContext) {
             this.applicationContext = event.getApplicationContext();
             this.initializeAPI();
+            //开发环境自动监听
             /*if (isDev(this.applicationContext.getEnvironment().getActiveProfiles())) {
                 new Thread(() -> {
                     while (true) {
@@ -109,22 +105,103 @@ public class ApiExporter implements ApplicationListener<ContextRefreshedEvent>, 
         response.setHeader("Pragma", "No-cache");
         response.setHeader("Cache-Control", "no-cache");
         response.setDateHeader("Expires", 0);
-        try (InputStream is = request.getInputStream(); PrintWriter out = response.getWriter()) {
-            handle(IOUtils.toString(is, encoding), out);
+
+        String method = request.getMethod();
+        if (method != null && "POST".equalsIgnoreCase(method)) {
+            try (InputStream is = request.getInputStream(); PrintWriter out = response.getWriter()) {
+                handlePost(IOUtils.toString(is, encoding), out);
+            }
+        } else {// GET、PUT、DELETE
+            handlePostExcept(request,response);
+        }
+
+    }
+
+    private void  handlePostExcept(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        String action = request.getParameter("action");
+        ApiMeta apiMeta = apiMetaMap.get(action);
+        try {
+            if (apiMeta == null) {
+                throw new ApiException(-1, String.format("Can not find a API named %s", action), null);
+            }
+
+            Object[] argsValue = null;
+            List<String> argNames = new ArrayList<>();
+
+            Enumeration<String> pNames = request.getParameterNames();
+            while (pNames.hasMoreElements()) {
+                String pName = pNames.nextElement();
+                if (!"action".equalsIgnoreCase(pName)) {
+                    argNames.add(pName);
+                }
+            }
+            Class<?>[] parameterTypes = apiMeta.method.getParameterTypes();
+            if (parameterTypes.length != argNames.size()) {
+                throw new ApiException(-1, String.format("Need %d parameters,but got %d", parameterTypes.length,
+                        argNames.size()), null);
+            }
+            if (!argNames.isEmpty()) {
+                argsValue = new Object[argNames.size()];
+                for (int i = 0; i < argNames.size(); i++) {
+                    String value = request.getParameter(argNames.get(i));
+                    Object newValue = null;
+                    Class<?> parameterType = parameterTypes[i];
+                    if (parameterType == String.class) {
+                        newValue = value;
+                    } else if (parameterType == int.class) {
+                        newValue = Integer.valueOf(value).intValue();
+                    } else if (parameterType == Integer.class) {
+                        newValue = Integer.valueOf(value);
+                    } else if (parameterType == Boolean.class) {
+                        newValue = Boolean.valueOf(value);
+                    } else if (parameterType == boolean.class) {
+                        newValue = Boolean.valueOf(value).booleanValue();
+                    } else if (parameterType == long.class) {
+                        newValue = Long.valueOf(value).longValue();
+                    } else if (parameterType == Long.class) {
+                        newValue = Long.valueOf(value);
+                    } else if (parameterType == float.class) {
+                        newValue = Float.valueOf(value).floatValue();
+                    } else if (parameterType == Float.class) {
+                        newValue = Float.valueOf(value);
+                    } else if (parameterType == double.class) {
+                        newValue = Double.valueOf(value).doubleValue();
+                    } else if (parameterType == Double.class) {
+                        newValue = Double.valueOf(value);
+                    } else if (parameterType == BigDecimal.class) {
+                        newValue = new BigDecimal(value);
+                    }
+
+                    argsValue[i] = newValue;
+                }
+            }
+
+            Object result ;
+            if (argsValue != null) {
+                result = apiMeta.method.invoke(apiMeta.bean, argsValue);
+            } else {
+                result = apiMeta.method.invoke(apiMeta.bean);
+            }
+            response.getWriter().write(JSON.toJSONString(result));
+        } catch (Exception e) {
+            JsonHandlerExceptionResolver.handleExceptionJsonMessage(response.getWriter(), e, null);
+            return;
         }
     }
 
-    private void handle(String json, PrintWriter out) throws IOException {
+
+    private void handlePost(String json, PrintWriter out) throws IOException {
         ApiRequest apiRequest = JSON.parseObject(json, ApiRequest.class);
-        ApiResponse apiResponse = new ApiResponse();
+        ApiResponse apiResponse = new ApiResponse(); //api输出对象
         apiResponse.setId(apiRequest.getId());
-        String name = apiRequest.getName();
-        ApiMeta apiMeta = apiMetaMap.get(name);
-        if (apiMeta == null) {
-            throw new ApiException(-1, String.format("Can not find a API named %s", name), null);
-        }
+        String action = apiRequest.getAction();
+        ApiMeta apiMeta = apiMetaMap.get(action);
+
         try {
-            Assert.notNull(apiMeta, String.format("Can not find a API named %s", name));
+            if (apiMeta == null) {
+                throw new ApiException(-1, String.format("Can not find a API named %s", action), null);
+            }
+//            Assert.notNull(apiMeta, String.format("Can not find a API named %s", action));
             Class<?>[] parameterTypes = apiMeta.method.getParameterTypes();
             if (parameterTypes.length != apiRequest.getArgs().length) {
                 throw new ApiException(-1, String.format("Need %d parameters,but got %d", parameterTypes.length,
@@ -200,7 +277,10 @@ public class ApiExporter implements ApplicationListener<ContextRefreshedEvent>, 
             RequestMapping requestMapping = method.getAnnotation(RequestMapping.class);
             PostMapping postMapping = method.getAnnotation(PostMapping.class);
             GetMapping getMapping = method.getAnnotation(GetMapping.class);
-            if (requestMapping != null || postMapping != null || getMapping != null) {
+            PutMapping putMapping = method.getAnnotation(PutMapping.class);
+            DeleteMapping deleteMapping = method.getAnnotation(DeleteMapping.class);
+            if (requestMapping != null || postMapping != null || getMapping != null
+                    || putMapping != null || deleteMapping != null) {
                 String name = beanName.concat(".").concat(method.getName());
                 ApiMeta apiMeta = new ApiMeta();
                 apiMeta.method = method;

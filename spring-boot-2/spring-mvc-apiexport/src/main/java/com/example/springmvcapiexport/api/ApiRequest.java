@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- * @author lujijiang
+ * post参数体：json格式。对应该bean结构。
  */
 public class ApiRequest implements Serializable {
     /**
@@ -20,9 +20,9 @@ public class ApiRequest implements Serializable {
      */
     String token;
     /**
-     * 服务名
+     * 服务名。格式：类名.方法名
      */
-    String name;
+    String action;
     /**
      * 服务参数
      */
@@ -44,12 +44,12 @@ public class ApiRequest implements Serializable {
         this.token = token;
     }
 
-    public String getName() {
-        return name;
+    public String getAction() {
+        return action;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAction(String action) {
+        this.action = action;
     }
 
     public Object[] getArgs() {
@@ -62,7 +62,11 @@ public class ApiRequest implements Serializable {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [id=" + id + ", name=" + name + ", args=" + Arrays.toString(args) + "]";
+        return "ApiRequest{" +
+                "id='" + id + '\'' +
+                ", token='" + token + '\'' +
+                ", action='" + action + '\'' +
+                ", args=" + Arrays.toString(args) +
+                '}';
     }
-
 }
