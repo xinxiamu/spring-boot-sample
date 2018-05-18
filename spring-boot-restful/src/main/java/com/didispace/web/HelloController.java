@@ -5,9 +5,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,6 +22,9 @@ import com.didispace.version.ApiVersion;
 @RestController
 @RequestMapping("/{version}/")
 public class HelloController {
+
+	@Autowired
+	private MessageSource messageSource;
 	
 	/*@Value("${my.name}")
 	private String myName;
@@ -32,16 +39,24 @@ public class HelloController {
 		user.setName(myName);
 		return user;
 	}*/
+
+	@Value("${my.sex}")
+	private String sex;
 	
 	//---------------- api版本管理 demo start ------------------//
 
+	/**
+	 * 返回中文乱码。要配置String消息返回的转换器
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("hello/")
     @ApiVersion(1)
 	@ResponseBody
     public String hello(HttpServletRequest request){
         System.out.println("haha1..........");
-        
-        return "hello:v1";
+        String msg = messageSource.getMessage("home.welcome",null,Locale.getDefault());
+        return "hello:v1" + sex + msg;
     }
     
     @RequestMapping("hello/")
