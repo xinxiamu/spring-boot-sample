@@ -36,7 +36,7 @@ public class IndexController {
     @GetMapping("/users/save")
     public boolean saveUser(String userName) {
         String sql = "INSERT INTO `users` (`username`, `first_name`, `last_name`) VALUES (?, '王1', '春海1')";
-        masterJdbcTemplate.update(sql,userName);
+        masterJdbcTemplate.update(sql, userName);
         return true;
     }
 }

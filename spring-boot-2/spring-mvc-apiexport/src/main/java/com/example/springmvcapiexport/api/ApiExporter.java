@@ -112,12 +112,12 @@ public class ApiExporter implements ApplicationListener<ContextRefreshedEvent>, 
                 handlePost(IOUtils.toString(is, encoding), out);
             }
         } else {// GET、PUT、DELETE
-            handlePostExcept(request,response);
+            handlePostExcept(request, response);
         }
 
     }
 
-    private void  handlePostExcept(HttpServletRequest request,HttpServletResponse response) throws IOException {
+    private void handlePostExcept(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action = request.getParameter("action");
         ApiMeta apiMeta = apiMetaMap.get(action);
         try {
@@ -176,7 +176,7 @@ public class ApiExporter implements ApplicationListener<ContextRefreshedEvent>, 
                 }
             }
 
-            Object result ;
+            Object result;
             if (argsValue != null) {
                 result = apiMeta.method.invoke(apiMeta.bean, argsValue);
             } else {
