@@ -60,6 +60,7 @@
 		<module>spring-boot-2/springboot2_cache</module>
 		<module>spring-boot-2/springboot2-flyway</module>
 		<module>spring-boot-2/springboot2-hikaricp</module>
+		<module>springboot-apache-camel</module>
 	</modules>
 
 
