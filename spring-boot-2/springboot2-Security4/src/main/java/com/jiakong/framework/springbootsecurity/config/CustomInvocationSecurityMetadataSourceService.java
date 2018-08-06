@@ -89,14 +89,14 @@ public class CustomInvocationSecurityMetadataSourceService implements FilterInvo
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
         FilterInvocation filterInvocation = (FilterInvocation) object;
-        if (resourMap == null){
+        if (resourMap == null) {
             loadResourceDefine();
         }
         Iterator<String> iterator = resourMap.keySet().iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             String resURL = iterator.next();
             RequestMatcher requestMatcher = new AntPathRequestMatcher(resURL);
-            if (requestMatcher.matches(filterInvocation.getHttpRequest())){
+            if (requestMatcher.matches(filterInvocation.getHttpRequest())) {
                 return resourMap.get(resURL);
             }
         }

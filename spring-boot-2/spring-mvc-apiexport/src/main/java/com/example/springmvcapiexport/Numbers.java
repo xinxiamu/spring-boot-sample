@@ -116,7 +116,7 @@ public class Numbers {
                             || arg.getClass().equals(Short.class)
                             || arg.getClass().equals(byte.class)
                             || arg.getClass().equals(Byte.class)
-                            ) {
+                    ) {
                         return this.pow((int) arg);
                     } else {
                         throw new IllegalArgumentException(String.format("UnSupport pow operation with class %s", arg.getClass().getCanonicalName()));

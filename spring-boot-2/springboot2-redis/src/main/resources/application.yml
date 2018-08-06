@@ -17,7 +17,7 @@ spring:
         max-wait: -1
         # 连接池中的最大空闲连接
         max-idle: 8
-         # 连接池中的最小空闲
+        # 连接池中的最小空闲
         min-idle: 0
     # 连接超时时间（毫秒）
     timeout: 10000

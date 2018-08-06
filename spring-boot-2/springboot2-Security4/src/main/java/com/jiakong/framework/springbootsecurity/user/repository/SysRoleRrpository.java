@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author yangpeng
  * @date 2018-05-23-09
  */
-public interface SysRoleRrpository extends JpaRepository<SysRole,Long> {
+public interface SysRoleRrpository extends JpaRepository<SysRole, Long> {
 }

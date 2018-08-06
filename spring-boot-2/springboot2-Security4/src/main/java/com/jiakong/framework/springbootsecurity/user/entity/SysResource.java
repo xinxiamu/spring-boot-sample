@@ -9,46 +9,46 @@ import javax.persistence.*;
  * @date 2018-05-22-16
  */
 @Entity
-@Table(name="s_resource")
+@Table(name = "s_resource")
 public class SysResource {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id",length=10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", length = 10)
     private int id;
 
     /**
      * url
      */
-    @Column(name="resourceString",length=1000)
+    @Column(name = "resourceString", length = 1000)
     private String resourceString;
 
     /**
      * 资源ID
      */
-    @Column(name="resourceId",length=50)
+    @Column(name = "resourceId", length = 50)
     private String resourceId;
 
     /**
      * 备注
      */
-    @Column(name="remark",length=200)
+    @Column(name = "remark", length = 200)
     private String remark;
 
     /**
      * 资源名称
      */
-    @Column(name="resourceName",length=400)
+    @Column(name = "resourceName", length = 400)
     private String resourceName;
     /**
      * 资源所对应的方法名
      */
-    @Column(name="methodName",length=400)
+    @Column(name = "methodName", length = 400)
     private String methodName;
 
     /**
      * 资源所对应的包路径
      */
-    @Column(name="methodPath",length=1000)
+    @Column(name = "methodPath", length = 1000)
     private String methodPath;
 
     public int getId() {

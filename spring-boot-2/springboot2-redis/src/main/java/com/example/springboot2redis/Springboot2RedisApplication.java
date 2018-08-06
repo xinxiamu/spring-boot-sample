@@ -33,8 +33,8 @@ public class Springboot2RedisApplication {
             RedisSerializer a = redisTemplate.opsForValue().getOperations().getValueSerializer();
             System.out.println(">>a:" + a);
 
-            redisTemplate.opsForValue().set("name","木头人");
-            stringRedisTemplate.opsForValue().set("user","小草公司");
+            redisTemplate.opsForValue().set("name", "木头人");
+            stringRedisTemplate.opsForValue().set("user", "小草公司");
             return "hello welcome";
         }
 

@@ -10,30 +10,30 @@ import java.util.Date;
  * @date 2018-05-22-16
  */
 @Entity
-@Table(name="s_resource_role")
+@Table(name = "s_resource_role")
 public class SysResourceRole {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name="id",length=10)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", length = 10)
     private int id;
 
     /**
      * 角色ID
      */
-    @Column(name="roleId",length=50)
+    @Column(name = "roleId", length = 50)
     private String roleId;
 
     /**
      * 资源ID
      */
-    @Column(name="resourceId",length=50)
+    @Column(name = "resourceId", length = 50)
     private String resourceId;
 
     /**
      * 更新时间
      */
-    @Column(name="updateTime")
+    @Column(name = "updateTime")
     private Date updateTime;
 
     public int getId() {

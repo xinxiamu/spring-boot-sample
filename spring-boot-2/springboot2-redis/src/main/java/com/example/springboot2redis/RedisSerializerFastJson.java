@@ -18,7 +18,7 @@ public class RedisSerializerFastJson<T> implements RedisSerializer<T> {
     }
 
     @Override
-    public byte[] serialize(T t)  {
+    public byte[] serialize(T t) {
         if (null == t) {
             return new byte[0];
         }
@@ -26,7 +26,7 @@ public class RedisSerializerFastJson<T> implements RedisSerializer<T> {
     }
 
     @Override
-    public T deserialize(byte[] bytes)  {
+    public T deserialize(byte[] bytes) {
         if (null == bytes || bytes.length <= 0) {
             return null;
         }
