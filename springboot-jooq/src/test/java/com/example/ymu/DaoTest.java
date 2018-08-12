@@ -4,9 +4,9 @@ import com.example.ymu.dao.*;
 import com.example.ymu.domain.*;
 import com.example.ymu.domain.type.PrincipalType;
 import com.example.ymu.domain.type.SexType;
-import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Record2;
+import org.jooq.Record3;
 import org.jooq.Result;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,8 +19,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import static jooq.gen.testDb.tables.PepoleBasic.PEPOLE_BASIC;
-import static jooq.gen.testDb.tables.School.SCHOOL;
+import static jooq.generated.Tables.PEPOLE_BASIC;
+import static jooq.generated.Tables.SCHOOL;
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -96,8 +97,11 @@ public class DaoTest {
 
 	@Test
 	public void getPepoleTest() {
-		Result<Record2<String, Timestamp>> a = pepoleBasicDao.getJooq().select(PEPOLE_BASIC.NAME,PEPOLE_BASIC.BIRTHDAY_TIME).from(PEPOLE_BASIC).fetch();
+		Result<Record3<String, java.util.Date, String>> a = pepoleBasicDao.getJooq().select(PEPOLE_BASIC.NAME, PEPOLE_BASIC.BIRTHDAY_TIME, PEPOLE_BASIC.SEXT_TYPE).from(PEPOLE_BASIC).fetch();
 		System.out.println("---a:" + a.size());
+		for (Record3 r : a) {
+			System.out.println(r.get(0));
+		}
 	}
 
 	@Test

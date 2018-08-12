@@ -2,9 +2,7 @@ package com.example.ymu.controller;
 
 import com.example.ymu.dao.BookDao;
 import com.example.ymu.dao.SchoolDao;
-import com.example.ymu.domain.Book;
 import com.example.ymu.domain.vo.VBook;
-import jooq.gen.testDb.tables.School;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

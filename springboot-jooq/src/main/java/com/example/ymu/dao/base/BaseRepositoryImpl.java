@@ -1,12 +1,11 @@
 package com.example.ymu.dao.base;
 
-import java.io.Serializable;
-import java.util.List;
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
+import java.io.Serializable;
+import java.util.List;
 
 public class BaseRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID>
 		implements BaseRepository<T, ID> {

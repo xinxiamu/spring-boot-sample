@@ -23,6 +23,17 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<org.hibernate.version>5.2.13.Final</org.hibernate.version>
+
+		<!--防止maven改动IDE的language level -->
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<!--数据库迁移所用的参数 -->
+		<db.driver>com.mysql.jdbc.Driver</db.driver>
+		<db.url>jdbc:mysql://localhost:3307</db.url>
+		<db.username>root</db.username>
+		<db.password>root</db.password>
+		<db.schema>testDb</db.schema>
 	</properties>
 
 	<dependencies>
@@ -55,21 +66,33 @@
 
 
 		<!--//////////////jooq///////////-->
+		<!--<dependency>-->
+			<!--<groupId>org.jooq</groupId>-->
+			<!--<artifactId>jooq</artifactId>-->
+			<!--<version>3.10.5</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>org.jooq</groupId>-->
+			<!--<artifactId>jooq-meta</artifactId>-->
+			<!--<version>3.10.5</version>-->
+		<!--</dependency>-->
 		<dependency>
-			<groupId>org.jooq</groupId>
-			<artifactId>jooq</artifactId>
-			<version>3.10.5</version>
-		</dependency>
-		<!--<dependency>
-			<groupId>org.jooq</groupId>
-			<artifactId>jooq-meta</artifactId>
-			<version>3.10.5</version>
-		</dependency>-->
-		<!--<dependency>
 			<groupId>org.jooq</groupId>
 			<artifactId>jooq-codegen</artifactId>
 			<version>3.10.5</version>
-		</dependency>-->
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.jdt.core.compiler</groupId>
+			<artifactId>ecj</artifactId>
+			<version>4.2.2</version>
+		</dependency>
+
 
 	</dependencies>
 
@@ -114,6 +137,7 @@
 				</executions>
 			</plugin>
 
+			<!--生成querydsl代码-->
 			<plugin>
 				<groupId>com.mysema.maven</groupId>
 				<artifactId>apt-maven-plugin</artifactId>
@@ -124,12 +148,81 @@
 							<goal>process</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>gensrc/main/java/querydsl</outputDirectory>
+							<!--<outputDirectory>gensrc/main/java/querydsl</outputDirectory>-->
+							<outputDirectory>target/generated-sources/java</outputDirectory>
 							<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
+
+			<!--////////// jooq code generate  ////////////-->
+			<plugin>
+				<!-- Specify the maven code generator plugin -->
+				<groupId>org.jooq</groupId>
+				<artifactId>jooq-codegen-maven</artifactId>
+				<!-- The plugin should hook into the generate goal -->
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<!-- JDBC connection parameters -->
+					<jdbc>
+						<driver>com.mysql.jdbc.Driver</driver>
+						<url>${db.url}</url>
+						<user>${db.username}</user>
+						<password>${db.password}</password>
+					</jdbc>
+					<!-- Generator parameters -->
+					<generator>
+						<database>
+							<name>org.jooq.util.mysql.MySQLDatabase</name>
+							<includes>.*</includes>
+							<inputSchema>${db.schema}</inputSchema>
+							<unsignedTypes>false</unsignedTypes>
+							<customTypes>
+								<customType>
+									<name>timestamp2DateConverter</name>
+									<type>java.util.Date</type>
+									<converter>utils.Timestamp2DateConverter</converter>
+								</customType>
+								<customType>
+									<name>byte2IntegerConverter</name>
+									<type>java.lang.Integer</type>
+									<converter>utils.Byte2IntegerConverter</converter>
+								</customType>
+							</customTypes>
+							<forcedTypes>
+								<forcedType>
+									<name>timestamp2DateConverter</name>
+									<types>DATETIME|TIMESTAMP</types>
+								</forcedType>
+								<forcedType>
+									<name>byte2IntegerConverter</name>
+									<types>TINYINT</types>
+								</forcedType>
+							</forcedTypes>
+						</database>
+						<generate>
+							<fluentSetters>true</fluentSetters>
+							<pojos>true</pojos>
+							<pojosToString>true</pojosToString>
+							<pojosEqualsAndHashCode>true</pojosEqualsAndHashCode>
+							<daos>true</daos>
+							<springAnnotations>true</springAnnotations>
+						</generate>
+						<target>
+							<packageName>jooq.generated</packageName>
+							<directory>src/main/java</directory>
+						</target>
+					</generator>
+				</configuration>
+			</plugin>
+
 
 		</plugins>
 	</build>
