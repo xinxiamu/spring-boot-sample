@@ -1,18 +1,17 @@
 package com.example.ymu;
 
 import com.example.ymu.exception.ExceptionTranslator;
-import org.jooq.DSLContext;
 import org.jooq.SQLDialect;
-import org.jooq.impl.*;
+import org.jooq.impl.DataSourceConnectionProvider;
+import org.jooq.impl.DefaultConfiguration;
+import org.jooq.impl.DefaultDSLContext;
+import org.jooq.impl.DefaultExecuteListenerProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
 import javax.sql.DataSource;
-import java.sql.Connection;
 
 /**
  * 功能简述:<br>
@@ -72,8 +71,8 @@ public class MainConfig {
     }
 
     @Bean
-    public DefaultDSLContext jooqDsl() {
-        DefaultDSLContext dsl = new DefaultDSLContext(jooqConfig());
+    public DefaultDSLContext jooqDsl(DefaultConfiguration jooqConfig) {
+        DefaultDSLContext dsl = new DefaultDSLContext(jooqConfig);
         return dsl;
     }
 
