@@ -31,8 +31,8 @@ public class ApplicationTests {
 	public void sendSimpleMail() throws Exception {
 
 		SimpleMailMessage message = new SimpleMailMessage();
-		message.setFrom("dyc87112@qq.com");
-		message.setTo("dyc87112@qq.com");
+		message.setFrom("zhangmutian@xcsqjr.com");
+		message.setTo("932852117@qq.com");
 		message.setSubject("主题：简单邮件");
 		message.setText("测试邮件内容");
 
@@ -45,14 +45,15 @@ public class ApplicationTests {
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-		helper.setFrom("dyc87112@qq.com");
-		helper.setTo("dyc87112@qq.com");
+		helper.setFrom("zhangmutian@xcsqjr.com");
+		helper.setTo("932852117@qq.com");
 		helper.setSubject("主题：有附件");
 		helper.setText("有附件的邮件");
 
-		FileSystemResource file = new FileSystemResource(new File("weixin.jpg"));
-		helper.addAttachment("附件-1.jpg", file);
-		helper.addAttachment("附件-2.jpg", file);
+		FileSystemResource file = new FileSystemResource(new File("D:\\Downloads\\aaa.docx"));
+		FileSystemResource file2 = new FileSystemResource(new File("D:\\Downloads\\apache-maven-3.6.0-bin.zip"));
+		helper.addAttachment("附件-1.docx", file);
+		helper.addAttachment("附件-2.zip", file2);
 
 		mailSender.send(mimeMessage);
 	}
