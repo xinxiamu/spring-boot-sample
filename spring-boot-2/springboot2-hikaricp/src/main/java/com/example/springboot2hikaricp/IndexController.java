@@ -34,7 +34,7 @@ public class IndexController {
 
     @GetMapping("/users/save")
     public boolean saveUser() {
-        String sql = "INSERT INTO `datebook`.`users` (`id`, `username`, `first_name`, `last_name`) VALUES ('3', '王春海1', '王', '春海')";
+        String sql = "INSERT INTO `datebook`.`users` (`id`, `username`, `first_name`, `last_name`) VALUES ('8', '对对对', '王', '春海')";
         jdbcTemplate.execute(sql);
         return true;
     }
