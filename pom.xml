@@ -60,6 +60,7 @@
 		<module>spring-boot-2/springboot2_cache</module>
 		<module>spring-boot-2/springboot2-flyway</module>
 		<module>spring-boot-2/springboot2-hikaricp</module>
+		<module>spring-boot-2/springboot2-hikarcp-multiple</module>
 		<module>spring-boot-2/springboot2-redis</module>
 		<module>springboot-apache-camel</module>
 		<module>office-sample/gs-spring-boot-docker/complete</module>

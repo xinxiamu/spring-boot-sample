@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Entity
+//@Entity
 public class AreaZh  {
 
     @Column(nullable = false,unique = true,columnDefinition = "varchar(16) comment '行政代码'")
