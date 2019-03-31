@@ -17,7 +17,7 @@ public class DataSourceConfig {
 
     @Bean(name = "masterDataSource")
     @Qualifier("masterDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.hikari.master")
+    @ConfigurationProperties(prefix = "spring.datebook.datasource.hikari.master")
     @Primary
     public DataSource masterDataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
@@ -25,7 +25,7 @@ public class DataSourceConfig {
 
     @Bean(name = "slaveDataSource")
     @Qualifier("slaveDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.hikari.slave")
+    @ConfigurationProperties(prefix = "spring.datebook.datasource.hikari.slave")
     public DataSource slaveDataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }
