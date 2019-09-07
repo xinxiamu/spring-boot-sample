@@ -64,12 +64,12 @@ public class ApplicationTests {
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-		helper.setFrom("dyc87112@qq.com");
-		helper.setTo("dyc87112@qq.com");
+		helper.setFrom("system@xcsqjr.com");
+		helper.setTo("932852117@qq.com");
 		helper.setSubject("主题：嵌入静态资源");
 		helper.setText("<html><body><img src=\"cid:weixin\" ></body></html>", true);
 
-		FileSystemResource file = new FileSystemResource(new File("weixin.jpg"));
+		FileSystemResource file = new FileSystemResource(new File("C:\\Users\\xinxiamu\\Pictures\\bbbb.png"));
 		helper.addInline("weixin", file);
 
 		mailSender.send(mimeMessage);
