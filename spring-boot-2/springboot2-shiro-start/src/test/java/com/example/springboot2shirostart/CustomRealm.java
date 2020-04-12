@@ -24,7 +24,7 @@ public class CustomRealm extends AuthorizingRealm {
     {
 //        userMap.put("zmt","123456");
 //        userMap.put("zmt","e10adc3949ba59abbe56e057f20f883e"); //数据库的密码是密文，不加盐
-        userMap.put("zmt","640a19b710290a9ff4d72e70cdd21913"); //md5加盐密码
+        userMap.put("zmt","88316675d7882e3fdbe066000273842c"); //md5加盐密码
         userMap.put("xr","654321");
 
         super.setName(realmName); //设置名称

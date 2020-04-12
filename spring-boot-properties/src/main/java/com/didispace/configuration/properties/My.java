@@ -2,10 +2,12 @@ package com.didispace.configuration.properties;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.stereotype.Component;
 
-@Component
-@ConfigurationProperties(prefix = "my", value = "classpath:my.properties")
+@Configuration
+@ConfigurationProperties(prefix = "my")
 public class My {
 
 	@NotEmpty

@@ -33,7 +33,7 @@ public class CustomRealmTest {
         SecurityUtils.setSecurityManager(defaultSecurityManager);
         Subject subject = SecurityUtils.getSubject();
 
-        UsernamePasswordToken token = new UsernamePasswordToken("zmt","e10adc3949ba59abbe56e057f20f883e");//用户,密码MD5加密。明文：123456
+        UsernamePasswordToken token = new UsernamePasswordToken("zmt","123456");//用户,密码MD5加密。明文：123456
         subject.login(token);
         System.out.println("isAuthenticated:" + subject.isAuthenticated());//已认证
 
@@ -51,7 +51,7 @@ public class CustomRealmTest {
 //        Md5Hash md5Hash = new Md5Hash("123456"); //md5加密密码，不加盐
 //        System.out.println("md5加密：" + md5Hash);
 
-        Md5Hash md5Hash = new Md5Hash("e10adc3949ba59abbe56e057f20f883e","aaa"); //md5加密密码，加盐，密码更加难以识破，盐一般用随机数，这里写死
+        Md5Hash md5Hash = new Md5Hash("123456","aaa"); //md5加密密码，加盐，密码更加难以识破，盐一般用随机数，这里写死
         System.out.println("md5加盐加密：" + md5Hash);
     }
 
