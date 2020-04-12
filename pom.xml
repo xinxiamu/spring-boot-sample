@@ -66,6 +66,8 @@
 		<module>office-sample/gs-spring-boot-docker/complete</module>
 		<module>jOOQ-jpa-example</module>
 		<module>jOOQ-jpa-example-entities</module>
+        <module>rabbitmq-sender</module>
+		<module>rabbitmq-reciever</module>
 	</modules>
 
 

@@ -19,9 +19,11 @@ public class ManyTest {
 
 	@Test
 	public void oneToMany() throws Exception {
-		for (int i=0;i<100;i++){
+		/*for (int i=0;i<100;i++){
 			neoSender.send(i);
-		}
+		}*/
+
+		neoSender.send(33);
 	}
 
 	@Test
