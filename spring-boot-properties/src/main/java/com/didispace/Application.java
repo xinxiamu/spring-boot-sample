@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.didispace.service.SendMessage;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 /**
  *
@@ -17,6 +18,7 @@ import com.didispace.service.SendMessage;
  *
  */
 @SpringBootApplication
+@EnableConfigurationProperties
 public class Application {
 
 	public static void main(String[] args) {
@@ -32,7 +34,7 @@ public class Application {
     public void init(){
         sendMessage.send();// 会根据profile指定的环境实例化对应的类
     }
-    
+
     //销毁bean前调用
     @PreDestroy
     public void desty(){
